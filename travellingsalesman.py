@@ -1,9 +1,9 @@
 from sys import maxsize
-v = 4
+cities = 4
 
 def travelling_salesman_function(graph, s):
     vertex = []
-    for i in range(v):
+    for i in range(cities):
         if i != s:
             vertex.append(i)
 
@@ -22,8 +22,8 @@ def travelling_salesman_function(graph, s):
     return min_path
 
 def next_perm(l):
-    n = len(l)
-    i = n-2
+    next_city = len(l)
+    i = next_city-2
 
     while i >= 0 and l[i] > l[i+1]:
         i -= 1
@@ -32,14 +32,14 @@ def next_perm(l):
         return False
 
     j = i+1
-    while j < n and l[j] > l[i]:
+    while j < next_city and l[j] > l[i]:
         j += 1
 
     j -= 1
 
     l[i], l[j] = l[j], l[i]
     left = i+1
-    right = n-1
+    right = next_city-1
 
     while left < right:
         l[left], l[right] = l[right], l[left]
